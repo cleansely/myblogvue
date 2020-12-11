@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="headband"></div>
+    <main-header site-title="siteTitle" site-subtitle="siteSubtitle"></main-header>
+    <main-content></main-content>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import MainHeader from "@/components/header/MainHeader";
+import Main from "@/components/main/Main";
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MainHeader,
+    MainContent: Main
+  },
+  data() {
+    return {
+      siteTitle: 'Next step',
+      siteSubtitle: "Ly's Blog"
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+@import url("./assets/css/base.css");
+.headband {
+  height: 3px;
+  background: #222;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
