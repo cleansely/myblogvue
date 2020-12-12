@@ -3,17 +3,20 @@
     <section id="posts" class="posts-expand">
       <home-article :posts="posts"></home-article>
     </section>
+    <home-page></home-page>
   </div>
 </template>
 
 <script>
 import HomeArticle from "@/views/home/HomeArticle";
+import HomePage from "@/views/home/HomePage";
 import {getPostList} from "@/network/home";
 
 export default {
   name: "Home",
   components: {
-    HomeArticle
+    HomeArticle,
+    HomePage
   },
   data() {
     return {
@@ -23,7 +26,7 @@ export default {
   created() {
     getPostList().then(res => {
       console.log(res);
-      this.posts = res
+      this.posts = res.results
     })
   }
 }
