@@ -1,38 +1,54 @@
 <template>
   <article style="opacity: 1;display: block;transform: translateY(0px);">
-    <header class="post-header">
-      <h1 class="post-title">
-        <a href="/" class="post-title-link">post title</a>
-      </h1>
-      <div class="post-meta">
+    <div v-for="post in posts" :key="post">
+      <header class="post-header">
+        <h1 class="post-title">
+          <a href="/" class="post-title-link">{{post.title}}</a>
+        </h1>
+        <div class="post-meta">
         <span class="post-time">
           <span class="post-meta-item-icon">
             <i class="fa fa-calendar-o"></i>
           </span>
-          <time datetime="2017-07-05T00:00:00+00:00">2017-05-06</time>
+          <time :datetime="post.created_time">{{ post.created_time }}</time>
         </span>
-        <span class="post-category">
+          <span class="post-category">
           <span class="post-meta-divider">|</span>
           <span class="post-meta-item-icon">
             <i class="fa fa fa-category-o"></i>
           </span>
-          <a href="/">Category</a>
+          <a href="/">{{ post.category }}</a>
         </span>
-        <span class="post-tag">
+          <span class="post-tag">
           <span class="post-meta-divider">|</span>
           <span class="post-meta-item-icon">
             <i class="fa fa fa-tag-o"></i>
           </span>
-          <a href="/">Category</a>
+          <a href="/">{{ post.tags }}</a>
         </span>
+        </div>
+      </header>
+      <div class="post-body">
+        <p>{{ post.excerpt }}</p>
       </div>
-    </header>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+    </div>
   </article>
 </template>
 
 <script>
 export default {
-  name: "HomeArticle"
+  name: "HomeArticle",
+  props: {
+    posts: {
+      type: Array,
+      default(){
+        return []
+      }
+    }
+  }
 }
 </script>
 
@@ -52,7 +68,7 @@ export default {
   vertical-align: top;
 }
 .posts-expand .post-meta {
-  margin: 3px 0 60px 0;
+  margin: 3px 0 15px 0;
   color: #999;
   font-family: "Lato","PingFang SC","Microsoft YaHei",sans-serif;
   font-size: 12px;
@@ -83,5 +99,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 .fa-tag-o:before {
   content: "\f02c";
+}
+.post-body {
+  font-family: "Lato","PingFang SC","Microsoft YaHei",sans-serif;
+}
+.posts-expand .post-eof {
+  display: block;
+  margin: 35px auto 60px;
+  width: 8%;
+  height: 1px;
+  background: #ccc;
+  text-align: center;
 }
 </style>

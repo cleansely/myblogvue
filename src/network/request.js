@@ -3,7 +3,7 @@ import axios from 'axios'
 export function request(config) {
   const instance = new axios.create({
     //baseURL:'http://123.207.32.32:8000',
-    baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'http://127.0.0.1:8000',
     timeout: 5000
   });
 
@@ -12,7 +12,7 @@ export function request(config) {
     //拦截后需要将拦截下来的请求数据返回发送
     return config;
   }, err => {
-
+    return err;
   })
 
   // 相应拦截器

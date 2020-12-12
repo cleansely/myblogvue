@@ -1,7 +1,7 @@
 import {request} from "@/network/request";
 
-export function getHomeMultidata() {
+export function getPostList() {
   return request({
-    url: '/home/multidata'
+    url: '/post.json'
   })
 }

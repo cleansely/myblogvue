@@ -3,7 +3,7 @@
     <div class="main-inner">
       <div class="content-wrap">
         <div id="content">
-          <router-view></router-view>
+          <slot></slot>
         </div>
       </div>
     </div>

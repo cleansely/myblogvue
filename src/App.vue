@@ -2,7 +2,9 @@
   <div id="app">
     <div class="headband"></div>
     <main-header site-title="siteTitle" site-subtitle="siteSubtitle"></main-header>
-    <main-content></main-content>
+    <main-content>
+      <router-view></router-view>
+    </main-content>
   </div>
 </template>
 
