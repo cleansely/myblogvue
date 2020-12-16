@@ -3,7 +3,7 @@
     <section id="posts" class="posts-expand">
       <home-article :posts="posts"></home-article>
     </section>
-    <home-page></home-page>
+    <home-page :count="count"></home-page>
   </div>
 </template>
 
@@ -20,13 +20,19 @@ export default {
   },
   data() {
     return {
-      posts: []
+      posts: [],
+      count: 0,
+      params: {
+        format: 'json',
+        page: this.$route.params.id
+      }
     }
   },
   created() {
-    getPostList().then(res => {
-      console.log(res);
-      this.posts = res.results
+    getPostList(this.params).then(res => {
+      console.log(this.params);
+      this.posts = res.results;
+      this.count = res.count;
     })
   }
 }

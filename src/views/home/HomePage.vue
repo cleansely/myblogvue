@@ -1,22 +1,45 @@
 <template>
-  <div class="home-page">
-    <nav class="pagination">
-      <a href="/" class="extend prev">
-        <i class="fa fa-angle-left"></i>
-      </a>
-      <a href="/" class="page-number">1</a>
-      <a href="/" class="page-number current">1</a>
-      <a href="/" class="page-number">1</a>
-      <a href="/" class="extend prev">
-        <i class="fa fa-angle-right"></i>
-      </a>
-    </nav>
-  </div>
+  <nav class="pagination">
+    <a href="/" class="extend prev">
+      <i class="fa fa-angle-left"></i>
+    </a>
+    <a :href="'/home/page/'+sub(page)" class="page-number" v-if="page>1">{{ page-1 }}</a>
+    <a :href="'/home/page/'+page" class="page-number current">{{ page }}</a>
+    <a :href="'/home/page/'+add(page)" class="page-number" v-if="page<totalPage()">{{ page+1 }}</a>
+    <a :href="'/home/page/'+totalPage()" class="extend prev">
+      <i class="fa fa-angle-right"></i>
+    </a>
+  </nav>
 </template>
 
 <script>
 export default {
-name: "HomePage"
+name: "HomePage",
+  props: {
+    count: {
+      type: Number,
+      default: 0
+    }
+  },
+  computed: {
+  page() {
+    if (this.$route.params.id) {
+      return Number(this.$route.params.id)
+    }
+    else return 1
+  }
+  },
+  methods: {
+  add: function (d) {
+    return Number(d)+ 1
+  },
+    sub: function (d) {
+      return d-1
+    },
+    totalPage: function () {
+      return Math.ceil(this.count/10)
+    }
+}
 }
 </script>
 

@@ -4,31 +4,31 @@
       <div v-for="post in posts" :key="post.id">
         <header class="post-header">
           <h1 class="post-title">
-            <a href="/" class="post-title-link">{{post.title}}</a>
+            <a :href="'/article/' + post.id" class="post-title-link">{{post.title}}</a>
           </h1>
           <div class="post-meta">
-        <span class="post-time">
-          <span class="post-meta-item-icon">
-            <i class="fa fa-calendar-o"></i>
-          </span>
-          <time :datetime="post.created_time">{{ post.created_time }}</time>
-        </span>
-            <span class="post-category">
-          <span class="post-meta-divider">|</span>
-          <span class="post-meta-item-icon">
-            <i class="fa fa fa-category-o"></i>
-          </span>
-          <a href="/">{{ post.category.name }}</a>
-        </span>
-            <span class="post-tag">
-          <span class="post-meta-divider">|</span>
-          <span class="post-meta-item-icon">
-            <i class="fa fa fa-tag-o"></i>
-          </span>
-          <span v-for="tag in post.tags" :key="tag.id">
-            <a href="/" style="margin-right: 5px !important;">{{ tag.name }}</a>
-          </span>
-        </span>
+            <span class="post-time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <time :datetime="post.modified_time">{{ rendeTime(post.modified_time) }}</time>
+            </span>
+                <span class="post-category">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa fa-category-o"></i>
+              </span>
+              <a href="/">{{ post.category.name }}</a>
+            </span>
+                <span class="post-tag">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa fa-tag-o"></i>
+              </span>
+              <span v-for="tag in post.tags" :key="tag.id">
+                <a href="/" style="margin-right: 5px !important;">{{ tag.name }}</a>
+              </span>
+            </span>
           </div>
         </header>
         <div class="post-body">
@@ -49,7 +49,12 @@ import VueMarkdown from "vue-markdown/src/VueMarkdown";
 
 export default {
   name: "HomeArticle",
-
+  methods: {
+    rendeTime(date) {
+      var dateee = new Date(date).toJSON();
+      return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
+    }
+  },
   components: {
     VueMarkdown
   },

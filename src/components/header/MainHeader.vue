@@ -14,15 +14,15 @@
               <i slot="itemIcon" class="menu-item-icon fa fa-fw fa-home"></i>
               <span slot="itemName">首页</span>
             </menu-item>
-            <menu-item path="/home">
+            <menu-item path="/category">
               <i slot="itemIcon" class="menu-item-icon fa fa-fw fa-category"></i>
               <span slot="itemName">分类</span>
             </menu-item>
-            <menu-item path="/home">
+            <menu-item path="/tag">
               <i slot="itemIcon" class="menu-item-icon fa fa-fw fa-tags"></i>
               <span slot="itemName">标签</span>
             </menu-item>
-            <menu-item path="/home">
+            <menu-item path="/archives">
               <i slot="itemIcon" class="menu-item-icon fa fa-fw fa-archive"></i>
               <span slot="itemName">归档</span>
             </menu-item>

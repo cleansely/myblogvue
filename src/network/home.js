@@ -1,7 +1,8 @@
 import {request} from "@/network/request";
 
-export function getPostList() {
+export function getPostList(params) {
   return request({
-    url: '/post.json'
+    url: '/post/',
+    params: params
   })
 }

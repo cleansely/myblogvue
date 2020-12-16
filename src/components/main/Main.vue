@@ -1,5 +1,5 @@
 <template>
-  <div id="main">
+  <main id="main">
     <div class="main-inner">
       <div class="content-wrap">
         <div id="content">
@@ -7,7 +7,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
