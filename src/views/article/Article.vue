@@ -83,7 +83,7 @@ export default {
 
 <style scoped>
 .main {
-  padding-bottom: 150px;
+  /*padding-bottom: 20px;*/
 }
 
 .main-inner {

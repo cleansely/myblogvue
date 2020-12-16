@@ -19,7 +19,7 @@ export default {
 <style scoped>
 
 #main {
-  margin-bottom: 150px;
+  margin-bottom: 40px;
 }
 .main-inner {
   margin: 0 auto;
